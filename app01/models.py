@@ -35,8 +35,6 @@ class UserInfo(RbacUserInfo):
 
     depart = models.ForeignKey(verbose_name='部门', to='Department', on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.user
 
 
 class Host(models.Model):

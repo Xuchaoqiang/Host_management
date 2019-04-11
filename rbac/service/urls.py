@@ -39,7 +39,7 @@ def memory_reverse(request, name, *args, **kwargs):
     :param kwargs:
     :return:
     """
-    url = reverse('rbac:menu_list')
+    url = reverse(name, args=args, kwargs=kwargs)
     origin_params = request.GET.get('_filter')
     if origin_params:
         url = "%s?%s" % (url, origin_params)

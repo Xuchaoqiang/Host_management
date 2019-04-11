@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '-rl^v-yfy4nl&_3kp@3pb9y!@7f9=pgo#%9t1(_1lh5v7&0y&r'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -49,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rbac.middlewares.rbac.Rbac'
 ]
 
 ROOT_URLCONF = 'Host_management.urls'
@@ -72,7 +71,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Host_management.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -82,7 +80,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -102,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -116,10 +112,34 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
 
+# 白名单，无需登录就可以访问
+VALID_URL_LIST = [
+    '/login/',
+    '/admin/.*'
+]
+
+# 重构RBAC的用户信息model
 RBAC_USER_MODLE_CLASS = "app01.models.UserInfo"
+
+# 自动发现URL时， 排除的URL
+AUTO_DISCOVER_EXCLUDE = [
+    '/admin/.*',
+    '/login/',
+    '/logout/',
+    '/index/',
+]
+
+# 权限和菜单的session key
+PERMISSION_SESSION_KEY = "luffy_permission_url_list_key"
+MENU_SESSION_KEY = "luffy_permission_menu_key"
+
+# 需要登录但无需权限的URL
+NO_PERMISSION_LIST = [
+    '/index/',
+    '/logout/',
+]

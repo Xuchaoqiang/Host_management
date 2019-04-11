@@ -14,11 +14,11 @@ urlpatterns = [
     url(r'^role/del/(?P<pk>\d+)/$', role.role_del, name='role_del'),
 
     # 用户相关url
-    url(r'^user/list/$', user.user_list, name='user_list'),
-    url(r'^user/add/$', user.user_add, name='user_add'),
-    url(r'^user/edit/(?P<pk>\d+)/$', user.user_edit, name='user_edit'),
-    url(r'^user/del/(?P<pk>\d+)/$', user.user_del, name='user_del'),
-    url(r'^user/reset/password/(?P<pk>\d+)/$', user.user_reset_pwd, name='user_reset_pwd'),
+    # url(r'^user/list/$', user.user_list, name='user_list'),
+    # url(r'^user/add/$', user.user_add, name='user_add'),
+    # url(r'^user/edit/(?P<pk>\d+)/$', user.user_edit, name='user_edit'),
+    # url(r'^user/del/(?P<pk>\d+)/$', user.user_del, name='user_del'),
+    # url(r'^user/reset/password/(?P<pk>\d+)/$', user.user_reset_pwd, name='user_reset_pwd'),
 
     # 一级菜单
     url(r'^menu/list/$', menu.menu_list, name='menu_list'),

@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 # Author:Irving
 
-from luffy_permission import settings
+from django.conf import settings
 
 
 def init_permission(current_user, request):
